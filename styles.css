@@ -1,0 +1,273 @@
+:root {
+    --color-main: #f8f5e4;
+    --color-main-container: #2d3439;
+    --color-list: #42484d;
+    --color-button: #cc8e35;
+    --color-button-secondary: #218c74;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    vertical-align: baseline;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-main);
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.8rem;
+    position: relative;
+    box-sizing: border-box;
+    background-color: var(--color-main);
+    height: 100%;
+    overflow-x: hidden;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+    display: block;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a,
+a:active,
+a:hover,
+a:visited {
+    text-decoration: none;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 2rem);
+    width: calc(100vw - 2rem);
+    margin: 1rem;
+}
+
+.map__container {
+    flex: 0 0 75%;
+    background-color: aqua;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.main__container {
+    position: relative;
+    flex: 0 0 25%;
+    background-color: var(--color-main-container);
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+}
+
+.form__wrapper {
+    position: relative;
+    margin: 0;
+    height: 100%;
+}
+
+.form,
+.list__item {
+    position: relative;
+    padding: 1rem;
+    background-color: var(--color-list);
+    border-radius: 1rem;
+}
+
+.form {
+    width: 30rem;
+    height: auto;
+    margin: 5rem 3rem 0;
+    opacity: 1;
+    transition: all 1s;
+}
+
+.form.hidden {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    transform: translateX(-40rem);
+}
+
+.form__row {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5rem auto;
+    width: 90%;
+}
+
+.form__lower {
+    display: none;
+}
+
+.form__item {
+    flex: 1 1 50%;
+}
+
+.form__input {
+    width: 100%;
+    margin-top: 0.5rem;
+    border: none;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+}
+
+.form__input {
+    margin-top: 0.5rem;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+.form__submit {
+    margin: auto;
+    padding: 1rem;
+    background-color: var(--color-button);
+    color: var(--color-main);
+    border: none;
+    font-weight: 600;
+}
+
+.list {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 5rem 1rem;
+    width: auto;
+}
+
+.list__item {
+    margin: 0 1.5rem;
+    background-color: var(--color-list);
+    height: min-content;
+}
+
+.list__item:first-child {
+    margin: 0 1.5rem 0 0;
+}
+
+.outing--dining {
+    border-left: 5px solid var(--color-button-secondary);
+}
+
+.outing--music {
+    border-left: 5px solid var(--color-button);
+}
+
+.outing__title {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.outing__span,
+.outing__span--icon {
+    display: inline-block;
+    font-weight: 300;
+    padding: 1rem 0;
+
+}
+
+.outing__span {
+    margin-right: 1.5rem;
+}
+
+.outing__span--icon {
+    font-size: 1.5rem;
+}
+
+.leaflet-popup {
+    margin-bottom: 2.5rem;
+}
+
+.dining .leaflet-popup-content-wrapper {
+    border-left: 5px solid var(--color-button-secondary);
+}
+
+.music .leaflet-popup-content-wrapper {
+    border-left: 5px solid var(--color-button);
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: var(--color-list);
+}
+
+.leaflet-popup-content {
+    font-size: 1.1rem;
+    color: var(--color-main);
+    /* width: max-content; */
+}
+
+.leaflet-popup-tip {
+    background: var(--color-list);
+}
+
+span {
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    body {
+        overflow: hidden;
+    }
+
+    .main {
+        flex-direction: row;
+    }
+
+    .main__container {
+        flex: 0 0 37.5rem;
+        flex-direction: column;
+        overflow: unset;
+        overflow-y: auto;
+    }
+
+    .map__container {
+        flex: 1 1;
+    }
+
+    .form__wrapper {
+        height: auto;
+        margin-bottom: 0;
+    }
+
+    .list {
+        flex-direction: column;
+        margin: 2rem 1rem;
+    }
+
+    .list__item:first-child {
+        margin: 1rem 1.5rem;
+    }
+
+    .list__item {
+        margin: 1rem 1.5rem;
+    }
+}

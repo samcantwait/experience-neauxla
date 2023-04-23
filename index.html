@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js" defer></script>
+    <title>Experience Neauxla</title>
+</head>
+
+<body>
+    <main class="main">
+        <div class="main__container">
+            <div class="form__wrapper">
+                <form class="form hidden" action="post">
+                    <div class="form__row form__row--main">
+                        <div class="form__item">
+                            <label for="type" class="form__label">Type:</label>
+                            <select name="selection-type" id="type" class="form__input form__input--type">
+                                <option value="dining">Dining</option>
+                                <option value="music">Music</option>
+                            </select>
+                        </div>
+                        <div class="form__item">
+                            <label for="rating" class="form__label">Rating:</label>
+                            <input type="number" min="0" max="10" class="form__input form__input--rating" id="rating"
+                                name="rating">
+                        </div>
+                    </div>
+                    <div class="form__lower form__lower--dining">
+                        <div class="form__row form__row--sub form__row--dining">
+                            <div class="form__item">
+                                <label for="resaurant-name" class="form__label form__label--name">Restaurant
+                                    Name:</label>
+                                <input type="text" class="form__input form__input--restaurant" id="resaurant-name"
+                                    name="resaurant-name">
+                            </div>
+                            <div class="form__item">
+                                <label for="cuisine" class="form__label">Cuisine:</label>
+                                <input type="text" class="form__input form__input--cuisine" placeholder="Ex: Greek"
+                                    id="cuisine" name="cuisine">
+                            </div>
+                        </div>
+                        <div class="form__row form__row--sub">
+                            <div class="form__item">
+                                <label for="cost" class="form__label">Cost:</label>
+                                <input type="number" class="form__input form__input--cost" id="cost" name="cost">
+                            </div>
+                            <div class="form__item">
+                                <label for="no-people" class="form__label">No. of People:</label>
+                                <input type="number" class="form__input form__input--people" id="no-people"
+                                    name="no-people">
+                            </div>
+                        </div>
+                        <div class="form__row form__row--sub">
+                            <button type="submit" class="form__submit">Submit</button>
+                        </div>
+                    </div>
+
+                    <div class="form__lower form__lower--music">
+                        <div class="form__row form__row--sub form__row--music">
+                            <div class="form__item">
+                                <label for="venue-name" class="form__label form__label--name">Venue Name:</label>
+                                <input type="text" class="form__input form__input--venue" id="venue-name"
+                                    name="venue-name">
+                            </div>
+                            <div class="form__item">
+                                <label for="band-name" class="form__label">Band Name:</label>
+                                <input type="text" class="form__input form__input--band" id="band-name"
+                                    name="band-name">
+                            </div>
+                        </div>
+                        <div class="form__row form__row--sub">
+                            <div class="form__item">
+                                <label for="duration" class="form__label">Duration in min:</label>
+                                <input type="number" class="form__input form__input--duration" id="duration"
+                                    name="duration">
+                            </div>
+                            <div class="form__item">
+                                <label for="no-drinks" class="form__label">No. of drinks:</label>
+                                <input type="number" class="form__input form__input--drinks" id="no-drinks"
+                                    name="no-drinks">
+                            </div>
+                        </div>
+                        <div class="form__row form__row--sub">
+                            <button type="submit" class="form__submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <ul class="list">
+            </ul>
+        </div>
+        <div class="map__container">
+            <div id="map"></div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+
+
+
+<!-- <form class="form">
+    <div class="form__row">
+        <div class="form__item">
+            <label for="type" class="form__label">Type:</label>
+            <select name="selection-type" id="type" class="form__input form__input--type">
+                <option value="dining">Dining</option>
+                <option value="show">Show</option>
+            </select>
+        </div>
+        <div class="form__item">
+            <label for="rating" class="form__label">Rating:</label>
+            <input type="number" min="0" max="10" class="form__input form__rating">
+        </div>
+    </div>
+    <div class="form__lower hidden">
+        <div class="form__row">
+            <div class="form__item">
+                <label for="estabName" class="form__label form__label--name">Name of restaurant</label>
+                <input type="text" class="form__input" id="estabName">
+            </div>
+            <div class="form__item">
+                <label for="cuisine" class="form__label">Cuisine</label>
+                <input type="text" class="form__input" placeholder="Ex: Greek">
+            </div>
+        </div>
+        <div class="form__row">
+            <div class="form__item">
+                <label for="cost" class="form__label">Cost:</label>
+                <input type="number" class="form__input" placeholder="">
+            </div>
+            <div class="form__item">
+                <label for="people" class="form__label">No. of People</label>
+                <input type="number" class="form__input">
+            </div>
+        </div>
+        <div class="form__row">
+            <button type="submit" class="form__submit">Submit</button>
+        </div>
+    </div>
+</form> -->
