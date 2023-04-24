@@ -1,6 +1,6 @@
 # Experience Neauxla
 
-This project was initially designed as part of Jonas Schmedtmann's JavaScript course in which it was titled "Mapty".
+This project was initially designed as part of Jonas Schmedtmann's JavaScript course, in which it was titled "Mapty".
 
 I have redesigned it as an "outing" tracker.  It is designed to track user's outings in New Orleans so they can revisit their favorite places or just quickly see where they've been. This application uses leaflet to display and interact with the map. 
 
