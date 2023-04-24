@@ -1,4 +1,4 @@
-#Experience Neauxla
+# Experience Neauxla
 
 This project was initially designed as part of Jonas Schmedtmann's JavaScript course in which it was titled "Mapty".
 
@@ -6,7 +6,7 @@ I have redesigned it as an "outing" tracker.  It is designed to track user's out
 
 The app is built using JavaScript classes to define not only the app itself, but also the individual tasks.  It was made primarily as a means of practicing the use of classes.
 
-##Directions for Use:
+## Directions for Use:
 1. Click a location of the map where you would like to add an outing.
 2. A form will appear. Select the type of outing you'd like to record from the dropdown menu. The choices are 'dining' or 'music'.
 3. Enter your personal rating for the outing. It must be a whole number between 1-10.
@@ -18,7 +18,7 @@ The app is built using JavaScript classes to define not only the app itself, but
 
 A new outing object will appear and a marker and popup wil be added to the map at the location of the outing.
 
-###To Delete an Outing
+### To Delete an Outing
 1. Simply click the trash can icon in the upper left corner of the outing details. (Be careful, once clicked, the outing is gone.)
 
 All outings will be saved to local memory so that user's can return to see their personal outings.
