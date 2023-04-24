@@ -76,6 +76,7 @@ class App {
     #latitude = 29.959026;
     #longitude = -90.065218;
     #outings = [];
+    #markers = [];
 
     constructor() {
         this._firstOutings();
@@ -169,6 +170,12 @@ class App {
                         <span class="outing__span--icon">💵</span>
                         <span class="outing__span outing__cost">${outing.costPerPerson === 'NaN' ? 'free!' : '$' + outing.costPerPerson + ' cost per/person'}</span>
                     </div>
+                    <div class="trash">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="#fff" d="M2 5v10c0 0.55 0.45 1 1 1h9c0.55 0 1-0.45 1-1v-10h-11zM5 14h-1v-7h1v7zM7 14h-1v-7h1v7zM9 14h-1v-7h1v7zM11 14h-1v-7h1v7z"></path>
+                        <path fill="#fff" d="M13.25 2h-3.25v-1.25c0-0.412-0.338-0.75-0.75-0.75h-3.5c-0.412 0-0.75 0.338-0.75 0.75v1.25h-3.25c-0.413 0-0.75 0.337-0.75 0.75v1.25h13v-1.25c0-0.413-0.338-0.75-0.75-0.75zM9 2h-3v-0.987h3v0.987z"></path>
+                        </svg>
+                    </div>
                 </li>
                 `
         }
@@ -196,6 +203,12 @@ class App {
                                 <span class="outing__span outing__drinks">${outing.drinksPerHour === 'NaN' ? '0' : outing.drinksPerHour + ' drinks per/hour'}</span>
                             </span>
                         </div>
+                        <div class="trash">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+                                <path fill="#fff" d="M2 5v10c0 0.55 0.45 1 1 1h9c0.55 0 1-0.45 1-1v-10h-11zM5 14h-1v-7h1v7zM7 14h-1v-7h1v7zM9 14h-1v-7h1v7zM11 14h-1v-7h1v7z"></path>
+                                <path fill="#fff" d="M13.25 2h-3.25v-1.25c0-0.412-0.338-0.75-0.75-0.75h-3.5c-0.412 0-0.75 0.338-0.75 0.75v1.25h-3.25c-0.413 0-0.75 0.337-0.75 0.75v1.25h13v-1.25c0-0.413-0.338-0.75-0.75-0.75zM9 2h-3v-0.987h3v0.987z"></path>
+                            </svg>
+                        </div>
                     </li>
                 `
         }
@@ -210,11 +223,20 @@ class App {
             className: `${outing.type}`,
             autoClose: false
         }).openPopup();
+
+        this.#markers.push(marker);
     }
 
     _moveToPopup(e) {
+        const trash = e.target.closest('.trash');
         const item = e.target.closest('.list__item');
         if (!item) return;
+
+        if (trash) {
+            this._deleteOuting(item);
+            return
+        }
+
         const curOuting = this.#outings.find(outing => outing.id === item.dataset.id)
         this.#map.flyTo(curOuting.coords, 18)
     }
@@ -230,6 +252,18 @@ class App {
 
         this.#outings = data;
         console.log(this.#outings)
+    }
+
+    _deleteOuting(item) {
+        const index = this.#outings.findIndex(outing => outing.id === item.dataset.id);
+        const markerIndex = this.#markers.findIndex(marker => marker._latlng.lat === this.#outings[index].coords[0] && marker._latlng.lng === this.#outings[index].coords[1])
+        console.log(markerIndex)
+        this.#map.removeLayer(this.#markers[markerIndex])
+        item.style.display = 'none';
+        this.#outings.splice(index, 1);
+        console.log(this.#outings)
+        this._setLocalStorage();
+        return
     }
 
     _firstOutings() {

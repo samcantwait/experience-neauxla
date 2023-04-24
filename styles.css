@@ -79,7 +79,8 @@ a:visited {
     background-color: var(--color-main-container);
     display: flex;
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .form__wrapper {
@@ -98,10 +99,11 @@ a:visited {
 
 .form {
     width: 30rem;
-    height: auto;
+    height: 12rem;
     margin: 5rem 3rem 0;
     opacity: 1;
     transition: all 1s;
+    overflow-y: scroll;
 }
 
 .form.hidden {
@@ -165,6 +167,7 @@ a:visited {
 }
 
 .list__item {
+    position: relative;
     margin: 0 1.5rem;
     background-color: var(--color-list);
     height: min-content;
@@ -233,6 +236,13 @@ span {
     white-space: nowrap;
 }
 
+.trash {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
 @media (min-width: 768px) {
     body {
         overflow: hidden;
@@ -245,7 +255,7 @@ span {
     .main__container {
         flex: 0 0 37.5rem;
         flex-direction: column;
-        overflow: unset;
+        overflow-x: unset;
         overflow-y: auto;
     }
 
@@ -256,6 +266,11 @@ span {
     .form__wrapper {
         height: auto;
         margin-bottom: 0;
+    }
+
+    .form {
+        height: auto;
+        overflow: auto;
     }
 
     .list {
