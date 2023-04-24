@@ -251,17 +251,14 @@ class App {
         if (!data) return;
 
         this.#outings = data;
-        console.log(this.#outings)
     }
 
     _deleteOuting(item) {
         const index = this.#outings.findIndex(outing => outing.id === item.dataset.id);
         const markerIndex = this.#markers.findIndex(marker => marker._latlng.lat === this.#outings[index].coords[0] && marker._latlng.lng === this.#outings[index].coords[1])
-        console.log(markerIndex)
         this.#map.removeLayer(this.#markers[markerIndex])
         item.style.display = 'none';
         this.#outings.splice(index, 1);
-        console.log(this.#outings)
         this._setLocalStorage();
         return
     }
