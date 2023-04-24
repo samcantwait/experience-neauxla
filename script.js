@@ -257,7 +257,7 @@ class App {
         const index = this.#outings.findIndex(outing => outing.id === item.dataset.id);
         const markerIndex = this.#markers.findIndex(marker => marker._latlng.lat === this.#outings[index].coords[0] && marker._latlng.lng === this.#outings[index].coords[1])
         this.#map.removeLayer(this.#markers[markerIndex])
-        item.style.display = 'none';
+        item.remove();
         this.#outings.splice(index, 1);
         this._setLocalStorage();
         return
